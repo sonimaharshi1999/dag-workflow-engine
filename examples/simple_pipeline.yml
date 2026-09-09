@@ -1,0 +1,33 @@
+# Minimal pipeline example
+# Good for quick testing and understanding the engine
+
+name: simple-pipeline
+version: "1.0.0"
+description: "Minimal three-task pipeline for quick testing"
+max_parallel: 2
+
+tasks:
+  - id: generate_data
+    task_type: load_data
+    description: "Generate a small synthetic dataset"
+    params:
+      n_samples: 100
+      n_features: 3
+      seed: 7
+
+  - id: train
+    task_type: train
+    description: "Train a simple model"
+    depends_on: [generate_data]
+    params:
+      learning_rate: 0.01
+      epochs: 50
+      seed: 7
+
+  - id: evaluate
+    task_type: evaluate
+    description: "Evaluate the trained model"
+    depends_on: [train]
+    params:
+      test_samples: 50
+      seed: 7

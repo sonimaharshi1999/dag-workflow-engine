@@ -1,0 +1,48 @@
+# Pipeline demonstrating parallel execution
+# Two independent feature branches merge at the training step
+
+name: parallel-feature-pipeline
+version: "1.0.0"
+description: "Pipeline with parallel branches for independent feature processing"
+max_parallel: 4
+
+tasks:
+  - id: load_raw_data
+    task_type: load_data
+    description: "Load raw synthetic dataset"
+    params:
+      n_samples: 500
+      n_features: 4
+      seed: 123
+
+  # Branch A: standardize
+  - id: standardize_features
+    task_type: transform
+    description: "Standardize features (z-score normalization)"
+    depends_on: [load_raw_data]
+    params:
+      method: standardize
+
+  # Branch B: validate (runs in parallel with standardize)
+  - id: check_data_quality
+    task_type: validate_data
+    description: "Run data quality checks"
+    depends_on: [load_raw_data]
+
+  # Merge point: both branches must complete
+  - id: train_model
+    task_type: train
+    description: "Train model after validation and feature processing"
+    depends_on: [standardize_features, check_data_quality]
+    params:
+      learning_rate: 0.005
+      epochs: 50
+      seed: 42
+
+  - id: evaluate_model
+    task_type: evaluate
+    description: "Evaluate final model"
+    depends_on: [train_model]
+    params:
+      test_samples: 100
+      seed: 77

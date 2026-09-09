@@ -1,0 +1,59 @@
+# Full ML training pipeline
+# Demonstrates: data loading, validation, transformation, training, evaluation, export
+
+name: ml-training-pipeline
+version: "1.0.0"
+description: "End-to-end ML training pipeline with synthetic data"
+max_parallel: 4
+
+tasks:
+  - id: load_data
+    task_type: load_data
+    description: "Generate synthetic regression dataset"
+    params:
+      n_samples: 1000
+      n_features: 5
+      seed: 42
+      noise: 0.1
+    retry:
+      max_retries: 2
+      base_delay: 1.0
+
+  - id: validate_data
+    task_type: validate_data
+    description: "Validate dataset quality and shape"
+    depends_on: [load_data]
+
+  - id: standardize
+    task_type: transform
+    description: "Standardize features (z-score)"
+    depends_on: [validate_data]
+    params:
+      method: standardize
+
+  - id: train_model
+    task_type: train
+    description: "Train linear regression model"
+    depends_on: [standardize]
+    params:
+      learning_rate: 0.01
+      epochs: 100
+      seed: 42
+    retry:
+      max_retries: 3
+      base_delay: 2.0
+
+  - id: evaluate_model
+    task_type: evaluate
+    description: "Evaluate model on held-out test set"
+    depends_on: [train_model]
+    params:
+      test_samples: 200
+      seed: 99
+
+  - id: export_model
+    task_type: export
+    description: "Export model weights and metadata to JSON"
+    depends_on: [evaluate_model]
+    params:
+      output_path: model_output.json
