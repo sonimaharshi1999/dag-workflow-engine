@@ -1,0 +1,32 @@
+{
+  "project_name": "dag-workflow-engine",
+  "title": "DAG Workflow Engine - ML Pipeline Orchestrator",
+  "category": "workflow-orchestration",
+  "difficulty": "advanced",
+  "description": "DAG-based workflow orchestration for ML pipelines. YAML task dependencies, topological execution with parallelism, retry with backoff, state persistence.",
+  "tech_stack": [
+    "networkx",
+    "pydantic",
+    "pyyaml",
+    "click",
+    "rich",
+    "pytest"
+  ],
+  "features": [
+    "YAML DAG configuration",
+    "Topological execution",
+    "Built-in ML tasks",
+    "Retry with backoff",
+    "State persistence",
+    "Rich terminal UI"
+  ],
+  "test_status": "PASSED",
+  "sample_input": {
+    "description": "YAML pipeline",
+    "example": "dagflow run --pipeline ml_pipeline.yml"
+  },
+  "sample_output": {
+    "description": "Pipeline execution",
+    "example": "Complete: 6/6 tasks passed (12.3s, 2 parallel generations)"
+  }
+}
