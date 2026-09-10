@@ -1,5 +1,7 @@
 # DAG Workflow Engine - ML Pipeline Orchestrator
 
+![Tests](https://github.com/sonimaharshi1999/dag-workflow-engine/actions/workflows/test.yml/badge.svg) ![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg) ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
+
 A DAG-based workflow orchestration engine for ML pipelines. Define task dependencies as a directed acyclic graph in YAML, execute with topological ordering and automatic parallelism, handle retries with exponential backoff, and track execution state with SQLite persistence.
 
 **Author:** Maharshi Soni | **License:** MIT
@@ -250,6 +252,25 @@ python -m pytest tests/ -v
 ```
 
 ---
+
+
+
+---
+
+## Sample Input / Output
+
+![Sample Input and Output](assets/io-card.png)
+
+---
+
+## Project Overview
+
+![Project Summary](assets/report-card.png)
+
+### Reports
+- [HTML Report](reports/dag-workflow-engine-report.html) - interactive report
+- [PDF Report](reports/dag-workflow-engine-report.pdf) - downloadable PDF
+- [TXT Report](reports/dag-workflow-engine-report.txt) - plain text
 
 ## License
 

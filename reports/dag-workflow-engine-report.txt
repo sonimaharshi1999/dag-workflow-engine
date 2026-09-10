@@ -1,0 +1,97 @@
+======================================================================
+  DAG Workflow Engine - ML Pipeline Orchestrator
+======================================================================
+
+Author: Maharshi Soni
+Category: workflow-orchestration
+Difficulty: advanced
+
+----------------------------------------------------------------------
+DESCRIPTION
+----------------------------------------------------------------------
+DAG-based workflow orchestration for ML pipelines. YAML task dependencies, topological execution with parallelism, retry with backoff, state persistence.
+
+----------------------------------------------------------------------
+TECH STACK
+----------------------------------------------------------------------
+  - networkx
+  - pydantic
+  - pyyaml
+  - click
+  - rich
+  - pytest
+
+----------------------------------------------------------------------
+FEATURES
+----------------------------------------------------------------------
+  * YAML DAG configuration
+  * Topological execution
+  * Built-in ML tasks
+  * Retry with backoff
+  * State persistence
+  * Rich terminal UI
+
+----------------------------------------------------------------------
+SAMPLE INPUT
+----------------------------------------------------------------------
+  YAML pipeline
+
+  Example:
+    dagflow run --pipeline ml_pipeline.yml
+
+----------------------------------------------------------------------
+SAMPLE OUTPUT
+----------------------------------------------------------------------
+  Pipeline execution
+
+  Example:
+    Complete: 6/6 tasks passed (12.3s, 2 parallel generations)
+
+----------------------------------------------------------------------
+PROJECT STRUCTURE
+----------------------------------------------------------------------
+  .gitignore
+  project-idea.json
+  pyproject.toml
+  README.md
+  .github/workflows/test.yml
+  dag_workflow_engine/cli.py
+  dag_workflow_engine/dag.py
+  dag_workflow_engine/executor.py
+  dag_workflow_engine/loader.py
+  dag_workflow_engine/models.py
+  dag_workflow_engine/state.py
+  dag_workflow_engine/ui.py
+  dag_workflow_engine/__init__.py
+  dag_workflow_engine/tasks/builtin.py
+  dag_workflow_engine/tasks/registry.py
+  dag_workflow_engine/tasks/__init__.py
+  dag_workflow_engine.egg-info/dependency_links.txt
+  dag_workflow_engine.egg-info/entry_points.txt
+  dag_workflow_engine.egg-info/PKG-INFO
+  dag_workflow_engine.egg-info/requires.txt
+  dag_workflow_engine.egg-info/SOURCES.txt
+  dag_workflow_engine.egg-info/top_level.txt
+  examples/ml_pipeline.yml
+  examples/parallel_pipeline.yml
+  examples/simple_pipeline.yml
+  tests/test_dag.py
+  tests/test_executor.py
+  tests/test_integration.py
+  tests/test_loader.py
+  tests/test_models.py
+  tests/test_state.py
+  tests/test_tasks.py
+  tests/__init__.py
+
+----------------------------------------------------------------------
+TEST RESULTS
+----------------------------------------------------------------------
+  Status: PASSED
+  Tests Run: 47
+  Passed: 47
+  Failed: 0
+
+======================================================================
+  Author: Maharshi Soni  |  License: MIT
+======================================================================
